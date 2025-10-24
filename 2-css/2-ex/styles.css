@@ -1,0 +1,118 @@
+:root {
+  --bg: #ffffff;
+  --texto: #111827;      /* cinza bem escuro */
+  --subtexto: #6b7280;   /* cinza médio */
+  --primaria: #2563eb;   /* azul */
+  --borda: #e5e7eb;      /* cinza claro */
+  --radius: 10px;
+  --shadow: 0 6px 20px rgba(0, 0, 0, .06);
+}
+
+html { scroll-behavior: smooth; }
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--texto);
+  background: var(--bg);
+  line-height: 1.6;
+}
+
+/* Layout básico */
+.container {
+  width: min(960px, 92%);
+  margin: 0 auto;
+  padding: 24px 0 40px;
+}
+
+/* Cabeçalho */
+header {
+  background: linear-gradient(180deg, #0f172a, #111827);
+  color: #fff;
+  padding: 18px 0;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow);
+}
+
+header .wrap {
+  width: min(960px, 92%);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+h1 {
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  margin: 0;
+  letter-spacing: .3px;
+}
+
+nav a {
+  color: #c7d2fe;
+  text-decoration: none;
+  margin-left: 14px;
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+
+nav a:hover,
+nav a:focus {
+  background: rgba(255, 255, 255, .08);
+  color: #fff;
+}
+
+/* Títulos de seção */
+h2 {
+  font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+  margin: 12px 0 8px;
+}
+
+/* Cartões/seções */
+section {
+  background: #fff;
+  border: 1px solid var(--borda);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin: 18px 0;
+  box-shadow: var(--shadow);
+}
+
+p { margin: 8px 0 12px; color: var(--texto); }
+p small, footer { color: var(--subtexto); }
+
+/* Imagens sempre no tamanho certo */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 10px 0 6px;
+}
+
+/* Lista enxuta */
+ul { padding-left: 18px; margin: 10px 0; }
+li { margin: 6px 0; }
+
+/* Links do conteúdo */
+main a {
+  color: var(--primaria);
+  text-decoration: none;
+}
+main a:hover { text-decoration: underline; }
+
+/* Rodapé */
+footer {
+  border-top: 1px solid var(--borda);
+  padding: 16px 0 26px;
+  text-align: center;
+}
+
+/* Acessibilidade: foco visível ao navegar por teclado */
+a:focus-visible {
+  outline: 3px solid #93c5fd;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
