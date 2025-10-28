@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Minha Página</title>
+
+    <!-- CSS simples e responsivo -->
+    <style>
+      :root {
+        --bg: #ffffff;
+        --texto: #111827;      /* cinza bem escuro */
+        --subtexto: #6b7280;   /* cinza médio */
+        --primaria: #2563eb;   /* azul */
+        --borda: #e5e7eb;      /* cinza claro */
+        --radius: 10px;
+        --shadow: 0 6px 20px rgba(0, 0, 0, .06);
+      }
+
+      html { scroll-behavior: smooth; }
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        color: var(--texto);
+        background: var(--bg);
+        line-height: 1.6;
+      }
+
+      /* Layout básico */
+      .container {
+        width: min(960px, 92%);
+        margin: 0 auto;
+        padding: 24px 0 40px;
+      }
+
+      /* Cabeçalho */
+      header {
+        background: linear-gradient(180deg, #0f172a, #111827);
+        color: #fff;
+        padding: 18px 0;
+        margin-bottom: 16px;
+        box-shadow: var(--shadow);
+      }
+
+      header .wrap {
+        width: min(960px, 92%);
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      h1 {
+        font-size: clamp(1.4rem, 2.5vw, 2rem);
+        margin: 0;
+        letter-spacing: .3px;
+      }
+
+      nav a {
+        color: #c7d2fe;
+        text-decoration: none;
+        margin-left: 14px;
+        padding: 6px 10px;
+        border-radius: 8px;
+      }
+
+      nav a:hover,
+      nav a:focus {
+        background: rgba(255, 255, 255, .08);
+        color: #fff;
+      }
+
+      /* Títulos de seção */
+      h2 {
+        font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+        margin: 12px 0 8px;
+      }
+
+      /* Cartões/seções */
+      section {
+        background: #fff;
+        border: 1px solid var(--borda);
+        border-radius: var(--radius);
+        padding: 16px;
+        margin: 18px 0;
+        box-shadow: var(--shadow);
+      }
+
+      p { margin: 8px 0 12px; color: var(--texto); }
+      p small, footer { color: var(--subtexto); }
+
+      /* Imagens sempre no tamanho certo */
+      img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin: 10px 0 6px;
+      }
+
+      /* Lista enxuta */
+      ul { padding-left: 18px; margin: 10px 0; }
+      li { margin: 6px 0; }
+
+      /* Bloquinho interativo */
+      .caixa-interativa {
+        background: #f8fafc;
+        border: 1px solid var(--borda);
+        border-radius: var(--radius);
+        padding: 12px 16px;
+        margin-top: 16px;
+      }
+
+      .caixa-interativa button {
+        background: var(--primaria);
+        color: #fff;
+        border: 0;
+        border-radius: 8px;
+        padding: 8px 12px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        margin-right: 8px;
+      }
+
+      .caixa-interativa button.alt {
+        background: transparent;
+        color: var(--primaria);
+        border: 1px solid var(--primaria);
+      }
+
+      /* Rodapé */
+      footer {
+        border-top: 1px solid var(--borda);
+        padding: 16px 0 26px;
+        text-align: center;
+      }
+
+      /* Acessibilidade: foco visível ao navegar por teclado */
+      a:focus-visible,
+      button:focus-visible {
+        outline: 3px solid #93c5fd;
+        outline-offset: 2px;
+        border-radius: 6px;
+      }
+
+      /* Tema escuro: o JS só troca a classe do <body> */
+      body.dark {
+        --bg: #0b1220;
+        --texto: #e5e7eb;
+        --subtexto: #9ca3af;
+        --primaria: #60a5fa;
+        --borda: #1f2937;
+        background: var(--bg);
+        color: var(--texto);
+      }
+
+      body.dark section {
+        background: #0f172a;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap">
+        <!-- (1) Título trocado -->
+        <h1 id="titulo">Minicurso Vercel</h1>
+        <nav>
+          <a href="#sobre">Sobre</a>
+          <a href="#contato">Contato</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section id="sobre">
+        <h2>Sobre</h2>
+        <p id="descricao">
+          Esta é uma página HTML sem CSS/JS, focada na estrutura.
+        </p>
+
+        <!-- (3) Imagem com alt descritivo -->
+        <img
+          id="foto"
+          src="foto.jpeg"
+          alt="Brasão do Colégio Estadual Presidente Arthur da Costa e Silva"
+        />
+
+        <ul>
+          <li>Estrutura</li>
+          <li>Semântica</li>
+          <li>Acessibilidade</li>
+          <!-- (2) Item extra na lista -->
+          <li>Outro Item</li>
+        </ul>
+
+        <!-- Bloco interativo controlado por JavaScript -->
+        <div class="caixa-interativa">
+          <p><strong>Demo de JavaScript:</strong></p>
+
+          <p>
+            Mensagem:
+            <span id="msg">[nenhuma ainda]</span>
+          </p>
+
+          <p>
+            Cliques no botão:
+            <span id="contador">0</span>
+          </p>
+
+          <button id="botaoMensagem">Dizer oi 👋</button>
+          <button id="botaoContador">+1 clique</button>
+          <button id="botaoTema" class="alt">Alternar tema (claro/escuro)</button>
+        </div>
+      </section>
+
+      <section id="contato">
+        <h2>Contato</h2>
+        <p>
+          Envie um e-mail para
+          <a href="mailto:exemplo@site.com" id="emailLink">
+            exemplo@site.com
+          </a>.
+        </p>
+
+        <div class="caixa-interativa">
+          <p>Copiar e-mail com JavaScript:</p>
+          <button id="copiarEmail">Copiar e-mail 📋</button>
+          <span id="statusCopia" style="font-size:0.9rem; color:var(--subtexto); margin-left:8px;">
+            <!-- feedback aparece aqui -->
+          </span>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <small>© 2025 Oficina Web</small>
+    </footer>
+
+    <!-- JavaScript: comportamento / interação -->
+    <script>
+      // Pegar elementos da página (HTML)
+      const msgSpan = document.getElementById("msg");
+      const contadorSpan = document.getElementById("contador");
+      const botaoMensagem = document.getElementById("botaoMensagem");
+      const botaoContador = document.getElementById("botaoContador");
+      const botaoTema = document.getElementById("botaoTema");
+      const body = document.body;
+      const foto = document.getElementById("foto");
+      const copiarEmailBtn = document.getElementById("copiarEmail");
+      const emailLink = document.getElementById("emailLink");
+      const statusCopia = document.getElementById("statusCopia");
+
+      // 1. Trocar o texto na tela quando clica (interatividade básica)
+      botaoMensagem.addEventListener("click", () => {
+        msgSpan.textContent = "Olá! Esse texto apareceu graças ao JavaScript 😄";
+      });
+
+      // 2. Contador de cliques
+      let totalCliques = 0;
+      botaoContador.addEventListener("click", () => {
+        totalCliques = totalCliques + 1;
+        contadorSpan.textContent = totalCliques;
+      });
+
+      // 3. Tema claro/escuro alternando classe no <body>
+      botaoTema.addEventListener("click", () => {
+        body.classList.toggle("dark");
+
+        if (body.classList.contains("dark")) {
+          botaoTema.textContent = "Voltar para claro ☀️";
+        } else {
+          botaoTema.textContent = "Alternar tema (claro/escuro)";
+        }
+      });
+
+      // 4. Copiar e-mail para a área de transferência
+      copiarEmailBtn.addEventListener("click", async () => {
+        // pega só o texto do link mailto:
+        const email = emailLink.textContent.trim();
+
+        try {
+          await navigator.clipboard.writeText(email);
+          statusCopia.textContent = "Copiado!";
+          statusCopia.style.color = "green";
+        } catch (err) {
+          statusCopia.textContent = "Não consegui copiar 😞";
+          statusCopia.style.color = "red";
+        }
+
+        // limpa depois de 2 segundos
+        setTimeout(() => {
+          statusCopia.textContent = "";
+        }, 2000);
+      });
+
+      // 5. Se a imagem não carregar, mostrar um plano B
+      foto.addEventListener("error", () => {
+        foto.alt = "Imagem não encontrada — mostrando uma imagem de teste";
+        foto.src = "https://picsum.photos/800/400";
+      }, { once: true });
+
+      // 6. Extra: mudar o título dinamicamente só pra provar
+      // (Isso mostra que JS pode alterar QUALQUER parte da página)
+      const titulo = document.getElementById("titulo");
+      titulo.textContent = "Minicurso Vercel (ao vivo!)";
+    </script>
+  </body>
+</html>
